@@ -1,0 +1,35 @@
+public class Main {
+
+    public static boolean zad1(double x, double y, int k){
+        if(Math.abs(x-y)<=Math.pow(10, -k)){return true;}
+        return false;
+    }
+
+    public static int zad2(int S){
+        int  i = 0;
+        while(!(S>Math.pow(i, 2) && S<Math.pow(i+1, 2))){
+            i++;
+        }
+        if(Math.abs(S-Math.pow(i, 2))>Math.abs(S-Math.pow(i+1, 2))) return i+1;
+        return i;
+    }
+
+    public static double zad3(int S, int n, int k){
+        double x = S - 1;
+        double x_next = ((n-1)*x+S/Math.pow(x, n-1))/n;
+        while(!zad1(x, x_next, k)){
+            x = x_next;
+            x_next = ((n-1)*x+S/Math.pow(x, n-1))/n;
+        }
+        return x;
+    }
+
+
+
+    public static void main(String[] args) {
+        System.out.println(zad2(48));
+        System.out.println(zad3(4, 2, 4));
+        System.out.println(zad3(125, 3, 4));
+        System.out.println(zad3(16, 4, 4));
+    }
+}
